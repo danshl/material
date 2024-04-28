@@ -1,0 +1,6 @@
+ - mkdir NAME
+ - git init
+//add files to the directory.
+ - git push origin main
+ - git commit -m "common"
+ - git push origin main

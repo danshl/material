@@ -1,0 +1,3 @@
+** Attack vectors for Red-team: https://github.com/infosecn1nja/Red-Teaming-Toolkit#Payload%20Development 
+
+

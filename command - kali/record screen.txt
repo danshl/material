@@ -1,0 +1,4 @@
+For record in kali:
+	recordmydesktop -o ~/Desktop/NAME.ogv
+For sto the record:
+	Ctrl+Alt+s
