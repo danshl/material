@@ -1,4 +1,4 @@
-
+m
 1. Scan by nmap:
 	** nmap -sV -sC IP;
 	** looking for old versions -> search in dbexploit -> exploit ;
