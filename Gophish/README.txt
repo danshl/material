@@ -1,0 +1,3 @@
+- Using Gophish for create a email patern.
+- Using your port & ip for run a server.
+- example page running is reset.html (login facebook page).
