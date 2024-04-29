@@ -1,0 +1,2 @@
+echo "John Smith" > users.lst
+python3 username_generator.py -w users.lst
