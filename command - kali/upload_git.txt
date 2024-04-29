@@ -3,5 +3,4 @@
 //add files to the directory.
  - git add .
  - git commit -m "common"
- - git push origin main
  - git push origin main (git push origin main --force)

@@ -1,0 +1,5 @@
+Youtube instruction: https://www.youtube.com/watch?v=xp8ufidc514
+
+Run the next command:
+	ip ad
+	adb shell settings put global http_proxy IP:8080

