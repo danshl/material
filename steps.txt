@@ -43,6 +43,7 @@
 	** http://109.67.147.80:5050/
 
 
+
 9. Directory Path Traversal attack:
 	**Payload types:
 		- ../../../etc/passwd | /etc/shadow 
