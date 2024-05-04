@@ -57,7 +57,7 @@
 	** Using burpsuite and analyze the data.
 	** Change the server and send the message to our server.
 	**Looking source page for tpes. Example: value="";
-	
+	https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Server%20Side%20Request%20Forgery/README.md
 
 11.Cryptographic Failures:
 	**Asumption - Connected to the network.
