@@ -84,3 +84,6 @@
 14. Windows Privilege Escalation - https://tryhackme.com/r/room/windowsprivesc20
 
 15.Phishing - using Gophish (server in directory Gophish).
+
+16. Checking Google Dorking -
+	filetype:pem,conf,ini,cfg	intitle:index.of   EXAMPLE: site:https://cs.biu.ac.il/ filetype:zip
